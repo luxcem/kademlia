@@ -1,4 +1,5 @@
 import random
+import codecs
 
 from twisted.internet import defer
 
@@ -43,7 +44,7 @@ class KademliaProtocol(RPCProtocol):
         return True
 
     def rpc_find_node(self, sender, nodeid, key):
-        self.log.info("finding neighbors of %i in local table" % int(nodeid.encode('hex'), 16))
+        self.log.info("finding neighbors of %i in local table" % int(codecs.encode(nodeid, 'hex_codec'), 16))
         source = Node(nodeid, sender[0], sender[1])
         self.welcomeIfNewNode(source)
         node = Node(key)
@@ -93,7 +94,7 @@ class KademliaProtocol(RPCProtocol):
         """
         if self.router.isNewNode(node):
             ds = []
-            for key, value in self.storage.items():
+            for key, value in self.storage.iteritems():
                 keynode = Node(digest(key))
                 neighbors = self.router.findNeighbors(keynode)
                 if len(neighbors) > 0:
