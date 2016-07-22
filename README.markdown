@@ -14,7 +14,7 @@ This library aims to be as close to a reference implementation of the [Kademlia 
 ## Installation
 
 ```
-pip install kademlia
+pip install kademlia3
 ```
 
 ## Usage
@@ -25,7 +25,7 @@ Assuming you want to connect to an existing network (run the standalone server e
 ```python
 from twisted.internet import reactor
 from twisted.python import log
-from kademlia.network import Server
+from kademlia3.network import Server
 import sys
 
 # log to std out
