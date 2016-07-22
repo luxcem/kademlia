@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 from setuptools import setup, find_packages
-from kademlia import version
+from kademlia3 import version
 
 setup(
     name="kademlia3",
