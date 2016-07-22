@@ -51,6 +51,7 @@ class KademliaProtocol(RPCProtocol):
         return list(map(tuple, self.router.findNeighbors(node, exclude=source)))
 
     def rpc_find_value(self, sender, nodeid, key):
+        self.log.info("got a find request from %s" % str(sender))
         source = Node(nodeid, sender[0], sender[1])
         self.welcomeIfNewNode(source)
         value = self.storage.get(key, None)
