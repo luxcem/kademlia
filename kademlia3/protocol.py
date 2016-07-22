@@ -5,10 +5,10 @@ from twisted.internet import defer
 
 from rpcudp.protocol import RPCProtocol
 
-from kademlia.node import Node
-from kademlia.routing import RoutingTable
-from kademlia.log import Logger
-from kademlia.utils import digest
+from kademlia3.node import Node
+from kademlia3.routing import RoutingTable
+from kademlia3.log import Logger
+from kademlia3.utils import digest
 
 
 class KademliaProtocol(RPCProtocol):

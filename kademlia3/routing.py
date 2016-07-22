@@ -3,7 +3,7 @@ import time
 import operator
 from collections import OrderedDict
 
-from kademlia.utils import OrderedSet, sharedPrefix
+from kademlia3.utils import OrderedSet, sharedPrefix
 
 
 class KBucket(object):

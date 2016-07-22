@@ -1,8 +1,8 @@
 from collections import Counter
 
-from kademlia.log import Logger
-from kademlia.utils import deferredDict
-from kademlia.node import Node, NodeHeap
+from kademlia3.log import Logger
+from kademlia3.utils import deferredDict
+from kademlia3.node import Node, NodeHeap
 
 
 class SpiderCrawl(object):
