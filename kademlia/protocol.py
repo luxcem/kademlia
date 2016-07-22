@@ -43,11 +43,11 @@ class KademliaProtocol(RPCProtocol):
         return True
 
     def rpc_find_node(self, sender, nodeid, key):
-        self.log.info("finding neighbors of %i in local table" % long(nodeid.encode('hex'), 16))
+        self.log.info("finding neighbors of %i in local table" % int(nodeid.encode('hex'), 16))
         source = Node(nodeid, sender[0], sender[1])
         self.welcomeIfNewNode(source)
         node = Node(key)
-        return map(tuple, self.router.findNeighbors(node, exclude=source))
+        return list(map(tuple, self.router.findNeighbors(node, exclude=source)))
 
     def rpc_find_value(self, sender, nodeid, key):
         source = Node(nodeid, sender[0], sender[1])
@@ -93,7 +93,7 @@ class KademliaProtocol(RPCProtocol):
         """
         if self.router.isNewNode(node):
             ds = []
-            for key, value in self.storage.iteritems():
+            for key, value in self.storage.items():
                 keynode = Node(digest(key))
                 neighbors = self.router.findNeighbors(keynode)
                 if len(neighbors) > 0:

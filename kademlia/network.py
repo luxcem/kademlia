@@ -100,7 +100,7 @@ class Server(object):
 
         def initTable(results):
             nodes = []
-            for addr, result in results.items():
+            for addr, result in list(results.items()):
                 if result[0]:
                     nodes.append(Node(result[1], addr[0], addr[1]))
             spider = NodeSpiderCrawl(self.protocol, self.node, nodes, self.ksize, self.alpha)
@@ -156,7 +156,7 @@ class Server(object):
         node = Node(dkey)
 
         def store(nodes):
-            self.log.info("setting '%s' on %s" % (key, map(str, nodes)))
+            self.log.info("setting '%s' on %s" % (key, list(map(str, nodes))))
             # if this node is close too, then store here as well
             if self.node.distanceTo(node) < max([n.distanceTo(node) for n in nodes]):
                 self.storage[dkey] = value

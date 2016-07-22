@@ -1,5 +1,6 @@
 from operator import itemgetter
 import heapq
+import codecs
 
 
 class Node:
@@ -7,7 +8,7 @@ class Node:
         self.id = id
         self.ip = ip
         self.port = port
-        self.long_id = long(id.encode('hex'), 16)
+        self.long_id = int(codecs.encode(id, 'hex_codec'), 16)
 
     def sameHomeAs(self, node):
         return self.ip == node.ip and self.port == node.port

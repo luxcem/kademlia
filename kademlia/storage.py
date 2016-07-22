@@ -1,11 +1,10 @@
 import time
-from itertools import izip
-from itertools import imap
+
 from itertools import takewhile
 import operator
 from collections import OrderedDict
 
-from zope.interface import implements
+from zope.interface import implementer
 from zope.interface import Interface
 
 
@@ -39,9 +38,8 @@ class IStorage(Interface):
         Get the iterator for this storage, should yield tuple of (key, value)
         """
 
-
+@implementer(IStorage)
 class ForgetfulStorage(object):
-    implements(IStorage)
 
     def __init__(self, ttl=604800):
         """
@@ -82,16 +80,16 @@ class ForgetfulStorage(object):
         minBirthday = time.time() - secondsOld
         zipped = self._tripleIterable()
         matches = takewhile(lambda r: minBirthday >= r[1], zipped)
-        return imap(operator.itemgetter(0, 2), matches)
+        return list(map(operator.itemgetter(0, 2), matches))
 
     def _tripleIterable(self):
-        ikeys = self.data.iterkeys()
-        ibirthday = imap(operator.itemgetter(0), self.data.itervalues())
-        ivalues = imap(operator.itemgetter(1), self.data.itervalues())
-        return izip(ikeys, ibirthday, ivalues)
+        ikeys = iter(list(self.data.keys()))
+        ibirthday = list(map(operator.itemgetter(0), iter(list(self.data.values()))))
+        ivalues = list(map(operator.itemgetter(1), iter(list(self.data.values()))))
+        return list(zip(ikeys, ibirthday, ivalues))
 
     def iteritems(self):
         self.cull()
-        ikeys = self.data.iterkeys()
-        ivalues = imap(operator.itemgetter(1), self.data.itervalues())
-        return izip(ikeys, ivalues)
+        ikeys = iter(list(self.data.keys()))
+        ivalues = list(map(operator.itemgetter(1), iter(list(self.data.values()))))
+        return list(zip(ikeys, ivalues))
