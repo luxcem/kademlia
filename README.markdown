@@ -2,8 +2,8 @@
 
 Python 3 port and various improvements of https://github.com/bmuller/kademlia
 
-[![Build Status](https://secure.travis-ci.org/bmuller/kademlia.png?branch=master)](https://travis-ci.org/bmuller/kademlia)
-[![Docs Status](https://readthedocs.org/projects/kademlia/badge/?version=latest)](http://kademlia.readthedocs.org)
+<!-- [![Build Status](https://secure.travis-ci.org/bmuller/kademlia.png?branch=master)](https://travis-ci.org/bmuller/kademlia) -->
+<!-- [![Docs Status](https://readthedocs.org/projects/kademlia/badge/?version=latest)](http://kademlia.readthedocs.org) -->
 
 **Documentation can be found at [kademlia.readthedocs.org](http://kademlia.readthedocs.org/).**
 
