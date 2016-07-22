@@ -6,7 +6,7 @@ setup(
     name="kademlia3",
     version=version,
     description="Kademlia is a distributed hash table for decentralized peer-to-peer computer networks.",
-    author="luxcem",
+    author="luxcem, Brian Muller",
     author_email="a@luxcem.fr",
     license="MIT",
     url="http://github.com/luxcem/kademlia",
